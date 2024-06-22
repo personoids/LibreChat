@@ -53,21 +53,27 @@ export const ThemeProvider = ({ initialTheme, children }) => {
   const [themes, setThemes] = useState<Theme[]>([
     { name: 'light', properties: {} },
     { name: 'dark', properties: {} },
-    { name: 'gcp', properties: { '--primary': '#4285F4', '--background': '#FFFFFF', '--text': '#000000' } },
-    { name: 'aws', properties: { '--primary': '#FF9900', '--background': '#232F3E', '--text': '#FFFFFF' } },
+    {
+      name: 'gcp',
+      properties: { '--primary': '#4285F4', '--background': '#FFFFFF', '--text': '#000000' },
+    },
+    {
+      name: 'aws',
+      properties: { '--primary': '#FF9900', '--background': '#232F3E', '--text': '#FFFFFF' },
+    },
   ]);
 
   const rawSetTheme = (rawTheme: string) => {
     const root = window.document.documentElement;
     const darkMode = isDark(rawTheme);
 
-    root.classList.remove(darkMode ? 'light' : 'dark');
-    root.classList.add(darkMode ? 'dark' : 'light');
+    root.classList.remove('light', 'dark', 'gcp', 'aws');
+    root.classList.add(rawTheme);
 
     localStorage.setItem('color-theme', rawTheme);
 
-    const themeProperties = themes.find(t => t.name === rawTheme)?.properties || {};
-    Object.keys(themeProperties).forEach(key => {
+    const themeProperties = themes.find((t) => t.name === rawTheme)?.properties || {};
+    Object.keys(themeProperties).forEach((key) => {
       root.style.setProperty(key, themeProperties[key]);
     });
   };
