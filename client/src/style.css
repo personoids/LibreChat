@@ -2176,4 +2176,89 @@ ol ol):not(:where([class~=not-prose] *)) {
 .move-up {
   animation: moveUp 4s ease-in-out infinite;
   
+}/* Custom Variables */
+:root {
+  --white:#fff;
+  --black:#000;
+  --gray-20: #ececf1;
+  --gray-50: #f7f7f8;
+  --gray-100: #ececec;
+  --gray-200: #e3e3e3;
+  --gray-300: #cdcdcd;
+  --gray-400: #999696;
+  --gray-500: #595959;
+  --gray-600: #424242;
+  --gray-700: #2f2f2f;
+  --gray-800: #212121;
+  --gray-850: #171717;
+  --gray-900: #0d0d0d;
+  --gizmo-gray-500:#999;
+  --gizmo-gray-600:#666;
+  --gizmo-gray-950:#0f0f0f;
+  --gcp-primary: #4285F4;
+  --gcp-background: #FFFFFF;
+  --gcp-text: #000000;
+  --aws-primary: #FF9900;
+  --aws-background: #232F3E;
+  --aws-text: #FFFFFF;
+}
+
+html {
+  --text-primary:var(--gray-800);
+  --text-secondary:var(--gray-600);
+  --text-tertiary:var(--gray-500);
+  --surface-primary:var(--white);
+  --surface-primary-alt:var(--white);
+  --surface-secondary:var(--gray-50);
+  --surface-tertiary:var(--gray-100);
+  --border-light:var(--gray-100);
+  --border-medium-alt:var(--gray-300);
+  --border-medium:var(--gray-200);
+  --border-heavy:var(--gray-300);
+  --border-xheavy:var(--gray-400);
+}
+
+.dark {
+  --text-primary:var(--gray-100);
+  --text-secondary:var(--gray-300);
+  --text-tertiary:var(--gray-500);
+  --surface-primary:var(--gray-900);
+  --surface-secondary:var(--gray-800);
+  --surface-primary-alt:var(--gray-850);
+  --surface-tertiary:var(--gray-700);
+  --border-light:var(--gray-700);
+  --border-medium-alt:var(--gray-600);
+  --border-medium:var(--gray-600);
+  --border-heavy:var(--gray-500);
+  --border-xheavy:var(--gray-400);
+}
+
+.gcp {
+  --text-primary:var(--gcp-text);
+  --text-secondary:var(--gcp-text);
+  --text-tertiary:var(--gcp-text);
+  --surface-primary:var(--gcp-background);
+  --surface-secondary:var(--gcp-background);
+  --surface-primary-alt:var(--gcp-background);
+  --surface-tertiary:var(--gcp-background);
+  --border-light:var(--gcp-primary);
+  --border-medium-alt:var(--gcp-primary);
+  --border-medium:var(--gcp-primary);
+  --border-heavy:var(--gcp-primary);
+  --border-xheavy:var(--gcp-primary);
+}
+
+.aws {
+  --text-primary:var(--aws-text);
+  --text-secondary:var(--aws-text);
+  --text-tertiary:var(--aws-text);
+  --surface-primary:var(--aws-background);
+  --surface-secondary:var(--aws-background);
+  --surface-primary-alt:var(--aws-background);
+  --surface-tertiary:var(--aws-background);
+  --border-light:var(--aws-primary);
+  --border-medium-alt:var(--aws-primary);
+  --border-medium:var(--aws-primary);
+  --border-heavy:var(--aws-primary);
+  --border-xheavy:var(--aws-primary);
 }
