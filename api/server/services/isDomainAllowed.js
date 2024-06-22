@@ -11,7 +11,14 @@ async function isDomainAllowed(email) {
     return false;
   }
 
-  return domain === "personoids.com";
+  const customConfig = await getCustomConfig();
+  if (!customConfig) {
+    return domain === 'personoids.com';
+  } else if (!customConfig?.registration?.allowedDomains) {
+    return domain === 'personoids.com';
+  }
+
+  return customConfig.registration.allowedDomains.includes(domain);
 }
 
 module.exports = isDomainAllowed;
