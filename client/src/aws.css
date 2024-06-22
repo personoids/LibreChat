@@ -1,0 +1,15 @@
+
+.aws {
+  --text-primary: #FF9900;
+  --text-secondary: #232F3E;
+  --text-tertiary: #FFFFFF;
+  --surface-primary: #232F3E;
+  --surface-secondary: #37475A;
+  --surface-primary-alt: #1A2027;
+  --surface-tertiary: #121C2D;
+  --border-light: #1A2027;
+  --border-medium-alt: #37475A;
+  --border-medium: #4A5568;
+  --border-heavy: #718096;
+  --border-xheavy: #A0AEC0;
+}

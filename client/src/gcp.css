@@ -1,0 +1,15 @@
+
+.gcp {
+  --text-primary: #4285F4;
+  --text-secondary: #34A853;
+  --text-tertiary: #000000;
+  --surface-primary: #FFFFFF;
+  --surface-secondary: #F1F3F4;
+  --surface-primary-alt: #E8EAED;
+  --surface-tertiary: #DADCE0;
+  --border-light: #E0E0E0;
+  --border-medium-alt: #C6C6C6;
+  --border-medium: #B0BEC5;
+  --border-heavy: #9E9E9E;
+  --border-xheavy: #757575;
+}
