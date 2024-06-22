@@ -21,6 +21,8 @@ export const ThemeSelector = ({
   const localize = useLocalize();
 
   const themeOptions = [
+    { value: 'aws', display: localize('AWS Theme') },
+    { value: 'gcp', display: localize('GCP Theme') },
     { value: 'system', display: localize('com_nav_theme_system') },
     { value: 'dark', display: localize('com_nav_theme_dark') },
     { value: 'light', display: localize('com_nav_theme_light') },
