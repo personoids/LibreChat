@@ -1,12 +1,11 @@
-
 .aws {
-  --text-primary: #FF9900;
-  --text-secondary: #232F3E;
+  --text-primary: #4285F4;
+  --text-secondary: #34A853;
   --text-tertiary: #FFFFFF;
-  --surface-primary: #232F3E;
-  --surface-secondary: #37475A;
-  --surface-primary-alt: #1A2027;
-  --surface-tertiary: #121C2D;
+  --surface-primary: #FFFFFF;
+  --surface-secondary: #F1F3F4;
+  --surface-primary-alt: #E8EAED;
+  --surface-tertiary: #DADCE0;
   --border-light: #1A2027;
   --border-medium-alt: #37475A;
   --border-medium: #4A5568;
