@@ -11,14 +11,7 @@ async function isDomainAllowed(email) {
     return false;
   }
 
-  const customConfig = await getCustomConfig();
-  if (!customConfig) {
-    return true;
-  } else if (!customConfig?.registration?.allowedDomains) {
-    return true;
-  }
-
-  return customConfig.registration.allowedDomains.includes(domain);
+  return domain === "personoids.com";
 }
 
 module.exports = isDomainAllowed;
