@@ -14,11 +14,16 @@
   --border-xheavy: #757575;
 }
 
+.gcp .btn-secondary {
+  color: #FFFFFF;
+  background-color: #4285F4;
+  border-color: #4285F4;
+}
 .gcp .btn-secondary:hover {
   --tw-bg-opacity: 1;
-  border-color: rgba(8, 82, 78, var(--tw-border-opacity));
-  color: rgba(255, 255, 240, var(--tw-text-opacity));
-  background-color: rgba(8, 82, 78, var(--tw-bg-opacity));
+  color: #FFFFFF;
+  background-color: rgba(66, 133, 244, var(--tw-bg-opacity));
+  border-color: rgba(66, 133, 244, var(--tw-border-opacity));
 }
 .gcp .btn-neutral {
   --tw-border-opacity: 1;
@@ -26,11 +31,12 @@
   --tw-text-opacity: 1;
   background-color: transparent;
   border-color: rgba(66, 66, 66, var(--tw-border-opacity));
-  color: rgba(255, 255, 240, var(--tw-text-opacity));
+  color: rgba(0, 0, 0, var(--tw-text-opacity));
 }
 .gcp .btn-neutral:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(66, 66, 66, var(--tw-bg-opacity));
+  color: #FFFFFF;
 }
 .gcp ::-webkit-scrollbar-thumb {
   background-color: hsla(0, 0%, 100%, 0.1);
