@@ -13,9 +13,9 @@ async function isDomainAllowed(email) {
 
   const customConfig = await getCustomConfig();
   if (!customConfig) {
-    return domain === 'personoids.com';
+    return true;
   } else if (!customConfig?.registration?.allowedDomains) {
-    return domain === 'personoids.com';
+    return true;
   }
 
   return customConfig.registration.allowedDomains.includes(domain);
