@@ -25,6 +25,7 @@
   background-color: rgba(66, 133, 244, var(--tw-bg-opacity));
   border-color: rgba(66, 133, 244, var(--tw-border-opacity));
 }
+
 .gcp .btn-neutral {
   --tw-border-opacity: 1;
   --tw-bg-opacity: 1;
@@ -38,17 +39,20 @@
   background-color: rgba(66, 66, 66, var(--tw-bg-opacity));
   color: #FFFFFF;
 }
+
 .gcp ::-webkit-scrollbar-thumb {
   background-color: hsla(0, 0%, 100%, 0.1);
 }
 .gcp .scrollbar-transparent::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
+
 .gcp body,
 .gcp html {
   --tw-bg-opacity: 1;
   background-color: rgba(23, 23, 23, var(--tw-bg-opacity));
 }
+
 .gcp .shadow-stroke:after {
   --tw-shadow: inset 0 0 0 1px hsla(0, 0%, 100%, 0.3);
   --tw-shadow-colored: inset 0 0 0 1px var(--tw-shadow-color);
@@ -74,4 +78,78 @@
   --tw-prose-pre-bg: var(--tw-prose-pre-bg);
   --tw-prose-th-borders: var(--tw-prose-th-borders);
   --tw-prose-td-borders: var(--tw-prose-td-borders);
+}
+
+/* Additional styles from style.css */
+.gcp .text-token-text-primary {
+  color: var(--text-primary);
+}
+.gcp .text-token-text-secondary {
+  color: var(--text-secondary);
+}
+.gcp .text-token-text-tertiary {
+  color: var(--text-tertiary);
+}
+
+.gcp .border-token-border-heavy {
+  border-color: var(--border-heavy);
+}
+.gcp .border-token-border-light {
+  border-color: var(--border-light);
+}
+.gcp .border-token-border-medium {
+  border-color: var(--border-medium);
+}
+.gcp .border-token-surface-primary {
+  border-color: var(--surface-primary);
+}
+.gcp .border-token-surface-secondary {
+  border-color: var(--surface-secondary);
+}
+.gcp .border-token-surface-tertiary {
+  border-color: var(--surface-tertiary);
+}
+
+.gcp .bg-token-surface-secondary {
+  background-color: var(--surface-secondary);
+}
+
+.gcp .icon-xs {
+  stroke-width: 1.5;
+  height: .75rem;
+  width: .75rem;
+}
+.gcp .icon-sm {
+  stroke-width: 2;
+  height: 1rem;
+  width: 1rem;
+}
+.gcp .icon-md,
+.gcp .icon-md-heavy {
+  stroke-width: 1.5;
+  height: 1.125rem;
+  width: 1.125rem;
+}
+.gcp .icon-md-heavy {
+  stroke-width: 2.5;
+}
+.gcp .icon-lg {
+  stroke-width: 1.5;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.gcp .icon-xl {
+  stroke-width: 1.5;
+  height: 1.75rem;
+  width: 1.75rem;
+}
+.gcp .icon-2xl {
+  stroke-width: 1.5;
+  height: 2rem;
+  width: 2rem;
+}
+.gcp .icon-cover {
+  stroke-width: 1.5;
+  height: 234px;
+  width: 234px;
 }
