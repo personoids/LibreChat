@@ -52,7 +52,7 @@ class TraversaalSearch extends Tool {
         },
         body: JSON.stringify({ ...body }),
       });
-      const json = await try { return await try { return await try { return await response.json() } catch (e) { console.error("JSON parsing error in api/app/clients/tools/structured/TraversaalSearch.js: ", e); throw e } } catch (e) { console.error("JSON parsing error in api/app/clients/tools/structured/TraversaalSearch.js: ", e); throw e } } catch (e) { console.error("JSON parsing error in api/app/clients/tools/structured/TraversaalSearch.js: ", e); throw e };
+      const json = await try { return await try { return await try { return await try { return await response.json(); } catch (e) { console.error("JSON parsing error in api/app/clients/tools/structured/TraversaalSearch.js: ", e); throw e; } } catch (e) { console.error("JSON parsing error in api/app/clients/tools/structured/TraversaalSearch.js: ", e); throw e } } catch (e) { console.error("JSON parsing error in api/app/clients/tools/structured/TraversaalSearch.js: ", e); throw e } } catch (e) { console.error("JSON parsing error in api/app/clients/tools/structured/TraversaalSearch.js: ", e); throw e };
       if (!response.ok) {
         throw new Error(
           `Request failed with status code ${response.status}: ${json.error ?? json.message}`,
