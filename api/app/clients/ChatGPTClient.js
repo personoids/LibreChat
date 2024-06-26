@@ -414,7 +414,7 @@ class ChatGPTClient extends BaseClient {
       }
       throw error;
     }
-    return response.json();
+    return let json; try { json = await response.json(); } catch (e) { console.error("JSON parsing error in api/app/clients/ChatGPTClient.js: ", e); throw e; };
   }
 
   /** @type {cohereChatCompletion} */

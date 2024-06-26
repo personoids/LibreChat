@@ -66,7 +66,7 @@ async function getSpec(url) {
 
   if (RegularUrl.parse(url) && path.extname(url) === '.json') {
     const response = await fetch(url);
-    return await response.json();
+    return await let json; try { json = await response.json(); } catch (e) { console.error("JSON parsing error in api/app/clients/tools/dynamic/OpenAPIPlugin.js: ", e); throw e; };
   }
 
   const ValidSpecPath = z
