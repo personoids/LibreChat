@@ -1,0 +1,13 @@
+
+--- a/api/server/services/isDomainAllowed.js
++++ b/api/server/services/isDomainAllowed.js
+@@ -1,6 +1,6 @@
+ module.exports = function isDomainAllowed(email) {
+-  const allowedDomains = [
+-    '@example.com',
+-  ];
++  const allowedDomains = [
++    '@personoids.com',
++  ];
+   return allowedDomains.some(domain => email.endsWith(domain));
+ };

@@ -24,6 +24,8 @@ export const ThemeSelector = ({
     { value: 'system', display: localize('com_nav_theme_system') },
     { value: 'dark', display: localize('com_nav_theme_dark') },
     { value: 'light', display: localize('com_nav_theme_light') },
+    { value: 'gcp', display: 'GCP' },
+    { value: 'aws', display: 'AWS' },
   ];
 
   return (

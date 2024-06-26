@@ -53,7 +53,7 @@ class GoogleSearchResults extends Tool {
       },
     );
 
-    const json = await response.json();
+    const json = await try { return await try { return await try { return await response.json() } catch (e) { console.error("JSON parsing error in api/app/clients/tools/structured/GoogleSearch.js: ", e); throw e } } catch (e) { console.error("JSON parsing error in api/app/clients/tools/structured/GoogleSearch.js: ", e); throw e } } catch (e) { console.error("JSON parsing error in api/app/clients/tools/structured/GoogleSearch.js: ", e); throw e };
     if (!response.ok) {
       throw new Error(`Request failed with status ${response.status}: ${json.error.message}`);
     }
