@@ -11,15 +11,15 @@ const Theme = ({ theme, onChange }: { theme: string; onChange: (value: string) =
 
   return (
     <div className="flex items-center justify-between">
-      <div className="cursor-pointer" onClick={() => onChange(theme)}>
-        {themeIcons[theme] || <Sun />}
+      <div className="cursor-pointer" onClick={() => onChange(theme === 'dark' ? 'light' : 'dark')}>
+        {themeIcons[theme]}
       </div>
     </div>
   );
 };
 
 const ThemeSelector = ({ returnThemeOnly }: { returnThemeOnly?: boolean }) => {
-  const { theme, setTheme, themes } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
   const changeTheme = useCallback(
     (value: string) => {
       setTheme(value);
@@ -36,17 +36,6 @@ const ThemeSelector = ({ returnThemeOnly }: { returnThemeOnly?: boolean }) => {
       <div className="absolute bottom-0 left-0 m-4">
         <Theme theme={theme} onChange={changeTheme} />
       </div>
-      <select
-        value={theme}
-        onChange={(e) => changeTheme(e.target.value)}
-        className="mt-4 rounded border p-2"
-      >
-        {themes.map((t) => (
-          <option key={t.name} value={t.name}>
-            {t.name}
-          </option>
-        ))}
-      </select>
     </div>
   );
 };
