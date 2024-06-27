@@ -2,6 +2,8 @@ import 'regenerator-runtime/runtime';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import './style.css';
+import './aws.css';
+import './gcp.css';
 import './mobile.css';
 import { ApiErrorBoundaryProvider } from './hooks/ApiErrorBoundaryContext';
 
