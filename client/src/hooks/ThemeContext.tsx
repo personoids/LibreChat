@@ -1,6 +1,3 @@
-//ThemeContext.js
-// source: https://plainenglish.io/blog/light-and-dark-mode-in-react-web-application-with-tailwind-css-89674496b942
-
 import React, { createContext, useState, useEffect } from 'react';
 
 const getInitialTheme = () => {
@@ -19,14 +16,25 @@ const getInitialTheme = () => {
   return 'light'; // light theme as the default;
 };
 
+type Theme = {
+  name: string;
+  properties: { [key: string]: string };
+};
+
 type ProviderValue = {
   theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
+  themes: Theme[];
+  addTheme: (theme: Theme) => void;
 };
 
 const defaultContextValue: ProviderValue = {
   theme: getInitialTheme(),
   setTheme: () => {
+    return;
+  },
+  themes: [],
+  addTheme: () => {
     return;
   },
 };
@@ -42,15 +50,32 @@ export const ThemeContext = createContext<ProviderValue>(defaultContextValue);
 
 export const ThemeProvider = ({ initialTheme, children }) => {
   const [theme, setTheme] = useState(getInitialTheme);
+  const [themes, setThemes] = useState<Theme[]>([
+    { name: 'light', properties: {} },
+    { name: 'dark', properties: {} },
+    {
+      name: 'gcp',
+      properties: { '--primary': '#4285F4', '--background': '#FFFFFF', '--text': '#000000' },
+    },
+    {
+      name: 'aws',
+      properties: { '--primary': '#FF9900', '--background': '#232F3E', '--text': '#FFFFFF' },
+    },
+  ]);
 
   const rawSetTheme = (rawTheme: string) => {
     const root = window.document.documentElement;
     const darkMode = isDark(rawTheme);
 
-    root.classList.remove(darkMode ? 'light' : 'dark');
-    root.classList.add(darkMode ? 'dark' : 'light');
+    root.classList.remove('light', 'dark', 'gcp', 'aws');
+    root.classList.add(rawTheme);
 
     localStorage.setItem('color-theme', rawTheme);
+
+    const themeProperties = themes.find((t) => t.name === rawTheme)?.properties || {};
+    Object.keys(themeProperties).forEach((key) => {
+      root.style.setProperty(key, themeProperties[key]);
+    });
   };
 
   useEffect(() => {
@@ -74,5 +99,13 @@ export const ThemeProvider = ({ initialTheme, children }) => {
     rawSetTheme(theme);
   }, [theme]);
 
-  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
+  const addTheme = (newTheme: Theme) => {
+    setThemes((prevThemes) => [...prevThemes, newTheme]);
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme, themes, addTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };

@@ -1,0 +1,155 @@
+
+.gcp {
+  --text-primary: #4285F4;
+  --text-secondary: #34A853;
+  --text-tertiary: #000000;
+  --surface-primary: #FFFFFF;
+  --surface-secondary: #F1F3F4;
+  --surface-primary-alt: #E8EAED;
+  --surface-tertiary: #DADCE0;
+  --border-light: #E0E0E0;
+  --border-medium-alt: #C6C6C6;
+  --border-medium: #B0BEC5;
+  --border-heavy: #9E9E9E;
+  --border-xheavy: #757575;
+}
+
+.gcp .btn-secondary {
+  color: #FFFFFF;
+  background-color: #4285F4;
+  border-color: #4285F4;
+}
+.gcp .btn-secondary:hover {
+  --tw-bg-opacity: 1;
+  color: #FFFFFF;
+  background-color: rgba(66, 133, 244, var(--tw-bg-opacity));
+  border-color: rgba(66, 133, 244, var(--tw-border-opacity));
+}
+
+.gcp .btn-neutral {
+  --tw-border-opacity: 1;
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 1;
+  background-color: transparent;
+  border-color: rgba(66, 66, 66, var(--tw-border-opacity));
+  color: rgba(0, 0, 0, var(--tw-text-opacity));
+}
+.gcp .btn-neutral:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(66, 66, 66, var(--tw-bg-opacity));
+  color: #FFFFFF;
+}
+
+.gcp ::-webkit-scrollbar-thumb {
+  background-color: hsla(0, 0%, 100%, 0.1);
+}
+.gcp .scrollbar-transparent::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.gcp body,
+.gcp html {
+  --tw-bg-opacity: 1;
+  background-color: rgba(23, 23, 23, var(--tw-bg-opacity));
+}
+
+.gcp .shadow-stroke:after {
+  --tw-shadow: inset 0 0 0 1px hsla(0, 0%, 100%, 0.3);
+  --tw-shadow-colored: inset 0 0 0 1px var(--tw-shadow-color);
+}
+.gcp .assistant-item:after {
+  --tw-shadow: inset 0 0 0 1px rgba(0,0,0,.25);
+  --tw-shadow-colored: inset 0 0 0 1px var(--tw-shadow-color);
+}
+.gcp .dark\:prose-invert {
+  --tw-prose-body: var(--tw-prose-body);
+  --tw-prose-headings: var(--tw-prose-headings);
+  --tw-prose-lead: var(--tw-prose-lead);
+  --tw-prose-links: var(--tw-prose-links);
+  --tw-prose-bold: var(--tw-prose-bold);
+  --tw-prose-counters: var(--tw-prose-counters);
+  --tw-prose-bullets: var(--tw-prose-bullets);
+  --tw-prose-hr: var(--tw-prose-hr);
+  --tw-prose-quotes: var(--tw-prose-quotes);
+  --tw-prose-quote-borders: var(--tw-prose-quote-borders);
+  --tw-prose-captions: var(--tw-prose-captions);
+  --tw-prose-code: var(--tw-prose-code);
+  --tw-prose-pre-code: var(--tw-prose-pre-code);
+  --tw-prose-pre-bg: var(--tw-prose-pre-bg);
+  --tw-prose-th-borders: var(--tw-prose-th-borders);
+  --tw-prose-td-borders: var(--tw-prose-td-borders);
+}
+
+/* Additional styles from style.css */
+.gcp .text-token-text-primary {
+  color: var(--text-primary);
+}
+.gcp .text-token-text-secondary {
+  color: var(--text-secondary);
+}
+.gcp .text-token-text-tertiary {
+  color: var(--text-tertiary);
+}
+
+.gcp .border-token-border-heavy {
+  border-color: var(--border-heavy);
+}
+.gcp .border-token-border-light {
+  border-color: var(--border-light);
+}
+.gcp .border-token-border-medium {
+  border-color: var(--border-medium);
+}
+.gcp .border-token-surface-primary {
+  border-color: var(--surface-primary);
+}
+.gcp .border-token-surface-secondary {
+  border-color: var(--surface-secondary);
+}
+.gcp .border-token-surface-tertiary {
+  border-color: var(--surface-tertiary);
+}
+
+.gcp .bg-token-surface-secondary {
+  background-color: var(--surface-secondary);
+}
+
+.gcp .icon-xs {
+  stroke-width: 1.5;
+  height: .75rem;
+  width: .75rem;
+}
+.gcp .icon-sm {
+  stroke-width: 2;
+  height: 1rem;
+  width: 1rem;
+}
+.gcp .icon-md,
+.gcp .icon-md-heavy {
+  stroke-width: 1.5;
+  height: 1.125rem;
+  width: 1.125rem;
+}
+.gcp .icon-md-heavy {
+  stroke-width: 2.5;
+}
+.gcp .icon-lg {
+  stroke-width: 1.5;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.gcp .icon-xl {
+  stroke-width: 1.5;
+  height: 1.75rem;
+  width: 1.75rem;
+}
+.gcp .icon-2xl {
+  stroke-width: 1.5;
+  height: 2rem;
+  width: 2rem;
+}
+.gcp .icon-cover {
+  stroke-width: 1.5;
+  height: 234px;
+  width: 234px;
+}
