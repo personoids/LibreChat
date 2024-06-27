@@ -179,6 +179,7 @@ export class ActionRequest {
     const headers = {
       ...this.authHeaders,
       'Content-Type': this.contentType,
+      'accept-encoding': '*',
     };
 
     const method = this.method.toLowerCase();
