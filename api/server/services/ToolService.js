@@ -352,6 +352,9 @@ async function processRequiredActions(client, requiredActions) {
     };
 
     try {
+      if(currentAction.error) {
+        throw new Error(currentAction.error);
+      }
       const promise = tool
         ._call(currentAction.toolInput)
         .then(handleToolOutput)

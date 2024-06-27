@@ -537,10 +537,19 @@ class StreamRunManager {
     const { submit_tool_outputs } = run.required_action;
     const actions = submit_tool_outputs.tool_calls.map((item) => {
       const functionCall = item.function;
-      const args = JSON.parse(functionCall.arguments);
+      let args = null;
+      let error = null;
+      try{
+        args = JSON.parse(functionCall.arguments);
+      }
+      catch(e){
+        logger.error('Error parsing function arguments:', e);
+        error = e;
+      }      
       return {
         tool: functionCall.name,
         toolInput: args,
+        error,
         toolCallId: item.id,
         run_id: run.id,
         thread_id: this.thread_id,
