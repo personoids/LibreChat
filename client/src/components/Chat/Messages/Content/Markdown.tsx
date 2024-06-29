@@ -45,7 +45,7 @@ export const a = memo(({ href, children }: { href: string; children: React.React
   const localize = useLocalize();
 
   const { file_id, filename, filepath } = useMemo(() => {
-    const pattern = new RegExp(`(?:files|outputs)/${user?.id}/([^\\s]+)`);
+    const pattern = new RegExp(`(?:files|outputs)/${user?.id}/([^\s]+)`);
     const match = href.match(pattern);
     if (match && match[0]) {
       const path = match[0];
@@ -158,20 +158,46 @@ const Markdown = memo(({ content, message, showCursor }: TContentProps) => {
     rehypePlugins.pop();
   }
 
+  const components = {
+    code,
+    a,
+    p,
+  } as { [nodeType: string]: React.ElementType };
+
+  // Add custom component for conv-button
+  const action = ({ node, ...props }) => {
+    if (node.type === 'conv-button') {
+      const { user_label, message, autoSend } = node;
+      return (
+        <button
+          onClick={() => {
+            const inputBox = document.getElementById('prompt-textarea');
+            if (inputBox) {
+              inputBox.value = message;
+              if (autoSend) {
+                const sendButton = document.querySelector('[data-testid="fruitjuice-send-button"]');
+                if (sendButton) {
+                  sendButton.click();
+                }
+              }
+            }
+          }}
+        >
+          {user_label}
+        </button>
+      );
+    }
+    return null;
+  };
+
+  components['action'] = action;
+
   return (
     <ReactMarkdown
       remarkPlugins={[supersub, remarkGfm, [remarkMath, { singleDollarTextMath: true }]]}
       rehypePlugins={rehypePlugins}
       linkTarget="_new"
-      components={
-        {
-          code,
-          a,
-          p,
-        } as {
-          [nodeType: string]: React.ElementType;
-        }
-      }
+      components={components}
     >
       {isLatestMessage && isSubmitting && !isInitializing && showCursor
         ? currentContent + cursor
