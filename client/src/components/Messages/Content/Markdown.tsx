@@ -39,26 +39,39 @@ const code = React.memo(({ inline, className, children}: TCodeProps) => {
       .split('\n')
       .map((line) => line.trim());
     const type = lines[0].split(': ')[1];
-    const user_label = lines[1].split(': ')[1];
-    const message = lines[2].split(': ')[1];
-    const autoSend = lines[3].split(': ')[1] === 'true';
-    return (
-      <button
-        onClick={() => {
-          const inputBox = document.getElementById('prompt-textarea');
-          if (inputBox) {
-            inputBox.value = message;
-            if (autoSend) {
-              const sendButton = document.querySelector('[data-testid="fruitjuice-send-button"]');
-              if (sendButton) {
-                sendButton.click();
+    if(type === 'conv-button') {
+      const user_label = lines[1].split(': ')[1];
+      const message = lines[2].split(': ')[1];
+      const autoSend = lines[3].split(': ')[1] === 'true';
+      return (
+        <button className="btn btn-secondary"
+          onClick={() => {
+            const inputBox = document.getElementById('prompt-textarea');
+            if (inputBox) {
+              Object.getOwnPropertyDescriptor(
+                window.HTMLTextAreaElement.prototype,
+                'value').set?.call(inputBox, message);
+              
+              inputBox.dispatchEvent(new Event('input', { bubbles: true }));
+              
+              if (autoSend) {
+                setTimeout(() => {                
+                    let sendButton = document.querySelector('button[@data-testid="send-button"]');
+                    if(!sendButton) 
+                      sendButton = document.querySelector('button[@data-testid="fruitjuice-send-button"]');
+                    if (sendButton) {
+                      sendButton.click();
+                    }
+                  }, 100)
               }
+                
             }
-          }
-        }}
-      >
-        {user_label}
-      </button>
+          }}
+        >
+          {user_label}
+        </button>
+      );
+    }
     );
   }
   if (inline) {
