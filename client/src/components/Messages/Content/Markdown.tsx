@@ -25,10 +25,42 @@ type TContentProps = {
   showCursor?: boolean;
 };
 
-const code = React.memo(({ inline, className, children }: TCodeProps) => {
+const code = React.memo(({ inline, className, children}: TCodeProps) => {
   const match = /language-(\w+)/.exec(className || '');
   const lang = match && match[1];
-
+  if(lang === 'action') {
+    // content is in the form of:
+    // type: conv-button
+    // user_label: Student Personoids
+    // message: student
+    // auto-send: true
+    const lines = children
+      .toString()
+      .split('\n')
+      .map((line) => line.trim());
+    const type = lines[0].split(': ')[1];
+    const user_label = lines[1].split(': ')[1];
+    const message = lines[2].split(': ')[1];
+    const autoSend = lines[3].split(': ')[1] === 'true';
+    return (
+      <button
+        onClick={() => {
+          const inputBox = document.getElementById('prompt-textarea');
+          if (inputBox) {
+            inputBox.value = message;
+            if (autoSend) {
+              const sendButton = document.querySelector('[data-testid="fruitjuice-send-button"]');
+              if (sendButton) {
+                sendButton.click();
+              }
+            }
+          }
+        }}
+      >
+        {user_label}
+      </button>
+    );
+  }
   if (inline) {
     return <code className={className}>{children}</code>;
   } else {
@@ -98,19 +130,17 @@ const Markdown = React.memo(({ content, message, showCursor }: TContentProps) =>
     rehypePlugins.pop();
   }
 
+  const components = {
+    code,
+    p,
+  } as { [nodeType: string]: React.ElementType };
+
   return (
     <ReactMarkdown
       remarkPlugins={[supersub, remarkGfm, [remarkMath, { singleDollarTextMath: true }]]}
       rehypePlugins={rehypePlugins}
       linkTarget="_new"
-      components={
-        {
-          code,
-          p,
-        } as {
-          [nodeType: string]: React.ElementType;
-        }
-      }
+      components={components}
     >
       {isLatestMessage && isSubmitting && !isInitializing
         ? currentContent + cursor

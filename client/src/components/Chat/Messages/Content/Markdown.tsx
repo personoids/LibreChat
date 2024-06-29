@@ -31,7 +31,39 @@ type TContentProps = {
 export const code = memo(({ inline, className, children }: TCodeProps) => {
   const match = /language-(\w+)/.exec(className || '');
   const lang = match && match[1];
-
+  if(lang === 'action') {
+    // content is in the form of:
+    // type: conv-button
+    // user_label: Student Personoids
+    // message: student
+    // auto-send: true
+    const lines = children
+      .toString()
+      .split('\n')
+      .map((line) => line.trim());
+    const type = lines[0].split(': ')[1];
+    const user_label = lines[1].split(': ')[1];
+    const message = lines[2].split(': ')[1];
+    const autoSend = lines[3].split(': ')[1] === 'true';
+    return (
+      <button
+        onClick={() => {
+          const inputBox = document.getElementById('prompt-textarea');
+          if (inputBox) {
+            inputBox.value = message;
+            if (autoSend) {
+              const sendButton = document.querySelector('[data-testid="fruitjuice-send-button"]');
+              if (sendButton) {
+                sendButton.click();
+              }
+            }
+          }
+        }}
+      >
+        {user_label}
+      </button>
+    );
+  }
   if (inline) {
     return <code className={className}>{children}</code>;
   } else {
@@ -163,34 +195,6 @@ const Markdown = memo(({ content, message, showCursor }: TContentProps) => {
     a,
     p,
   } as { [nodeType: string]: React.ElementType };
-
-  // Add custom component for conv-button
-  const action = ({ node, ...props }) => {
-    if (node.type === 'conv-button') {
-      const { user_label, message, autoSend } = node;
-      return (
-        <button
-          onClick={() => {
-            const inputBox = document.getElementById('prompt-textarea');
-            if (inputBox) {
-              inputBox.value = message;
-              if (autoSend) {
-                const sendButton = document.querySelector('[data-testid="fruitjuice-send-button"]');
-                if (sendButton) {
-                  sendButton.click();
-                }
-              }
-            }
-          }}
-        >
-          {user_label}
-        </button>
-      );
-    }
-    return null;
-  };
-
-  components['action'] = action;
 
   return (
     <ReactMarkdown
