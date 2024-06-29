@@ -53,7 +53,7 @@ export const code = memo(({ inline, className, children }: TCodeProps) => {
             if (inputBox) {
               Object.getOwnPropertyDescriptor(
                 window.HTMLTextAreaElement.prototype,
-                'value').set?.call(inputBox, message);
+                'value').set.call(inputBox, message);
               
               inputBox.dispatchEvent(new Event('input', { bubbles: true }));
               
@@ -67,14 +67,12 @@ export const code = memo(({ inline, className, children }: TCodeProps) => {
                     }
                   }, 100)
               }
-                
             }
           }}
         >
           {user_label}
-        </button>
-      );
-    }
+        </button> );  
+    }    
   }
   if (inline) {
     return <code className={className}>{children}</code>;
