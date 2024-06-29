@@ -60,9 +60,9 @@ export const code = memo(({ inline, className, children }: TCodeProps) => {
               
               if (autoSend) {
                 setTimeout(() => {                
-                    let sendButton = document.querySelector('button[@data-testid="send-button"]');
+                    let sendButton = document.querySelector('button[data-testid="send-button"]');
                     if(!sendButton) 
-                      sendButton = document.querySelector('button[@data-testid="fruitjuice-send-button"]');
+                      sendButton = document.querySelector('button[data-testid="fruitjuice-send-button"]');
                     if (sendButton) {
                       sendButton.click();
                     }
