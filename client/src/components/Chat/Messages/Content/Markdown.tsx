@@ -43,6 +43,7 @@ export const code = memo(({ inline, className, children }: TCodeProps) => {
       .map((line) => line.trim());
     const type = lines[0].split(': ')[1];
     if(type === 'conv-button') {
+      if(lines.length < 4) return (<></>);
       const user_label = lines[1].split(': ')[1];
       const message = lines[2].split(': ')[1];
       const autoSend = lines[3].split(': ')[1] === 'true';
