@@ -50,7 +50,7 @@ const code = React.memo(({ inline, className, children}: TCodeProps) => {
             if (inputBox) {
               Object.getOwnPropertyDescriptor(
                 window.HTMLTextAreaElement.prototype,
-                'value').set?.call(inputBox, message);
+                'value').set.call(inputBox, message);
               
               inputBox.dispatchEvent(new Event('input', { bubbles: true }));
               
@@ -64,15 +64,12 @@ const code = React.memo(({ inline, className, children}: TCodeProps) => {
                     }
                   }, 100)
               }
-                
             }
           }}
         >
           {user_label}
-        </button>
-      );
-    }
-    );
+        </button> );  
+    }    
   }
   if (inline) {
     return <code className={className}>{children}</code>;
@@ -80,7 +77,6 @@ const code = React.memo(({ inline, className, children}: TCodeProps) => {
     return <CodeBlock lang={lang || 'text'} codeChildren={children} />;
   }
 });
-
 const p = React.memo(({ children }: { children: React.ReactNode }) => {
   return <p className="mb-2 whitespace-pre-wrap">{children}</p>;
 });
