@@ -197,9 +197,9 @@ const Markdown = memo(({ content, message, showCursor }: TContentProps) => {
     isValidIframe = validateIframe(currentContent);
   }
   isValidIframe = true;
-  if (isEdited || ((!isInitializing || !isLatestMessage) && !isValidIframe)) {
-    rehypePlugins.pop();
-  }
+  // if (isEdited || ((!isInitializing || !isLatestMessage) && !isValidIframe)) {
+  //   rehypePlugins.pop();
+  // }
 
   const components = {
     code,

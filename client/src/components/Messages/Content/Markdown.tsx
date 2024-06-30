@@ -137,9 +137,9 @@ const Markdown = React.memo(({ content, message, showCursor }: TContentProps) =>
   }
   isValidIframe = true;
 
-  if (isEdited || ((!isInitializing || !isLatestMessage) && !isValidIframe)) {
-    rehypePlugins.pop();
-  }
+  // if (isEdited || ((!isInitializing || !isLatestMessage) && !isValidIframe)) {
+  //   rehypePlugins.pop();
+  // }
 
   const components = {
     code,
