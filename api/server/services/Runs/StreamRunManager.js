@@ -517,7 +517,7 @@ class StreamRunManager {
         missingOutputs.push({
           tool_call_id: toolCallId,
           output:
-            'The tool failed to produce an output. The tool may not be currently available or experienced an unhandled error. make sure you used the right tool name with the action\'s base64 suffix.',
+            'The tool failed to produce an output. The tool may not be currently available or experienced an unhandled error. make sure you used the right tool name with the action\'s base64 suffix. did you mean to call run_python?.',
         });
       }
     }
