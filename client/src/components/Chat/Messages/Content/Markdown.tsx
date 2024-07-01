@@ -17,6 +17,8 @@ import useLocalize from '~/hooks/useLocalize';
 import store from '~/store';
 import rehypeReact from 'rehype-react';
 import rehypeParse from 'rehype-parse';
+import rehypeVideo from 'rehype-video';
+
 import * as prod from 'react/jsx-runtime'
 // @ts-expect-error: the react types are missing.
 const production = {Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs,
@@ -189,8 +191,8 @@ const Markdown = memo(({ content, message, showCursor }: TContentProps) => {
     ],
     [rehypeRaw],
     [rehypeParse, { fragment: true }],
-    [rehypeReact, { production }],
-    
+    [rehypeReact, { production }],    
+    [rehypeVideo]    
   ];
 
   if (isInitializing) {
