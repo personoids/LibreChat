@@ -15,6 +15,14 @@ import { useChatContext, useToastContext } from '~/Providers';
 import { useFileDownload } from '~/data-provider';
 import useLocalize from '~/hooks/useLocalize';
 import store from '~/store';
+import rehypeReact from 'rehype-react';
+import rehypeParse from 'rehype-parse';
+import * as prod from 'react/jsx-runtime'
+// @ts-expect-error: the react types are missing.
+const production = {Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs,
+  createElement: React.createElement,
+  components: {}
+}
 
 type TCodeProps = {
   inline: boolean;
@@ -167,6 +175,7 @@ const Markdown = memo(({ content, message, showCursor }: TContentProps) => {
     currentContent = currentContent?.replace('z-index: 1;', '') ?? '';
     currentContent = LaTeXParsing ? processLaTeX(currentContent) : currentContent;
   }
+  // https://github.com/marko-knoebl/rehype-inline?
 
   const rehypePlugins: PluggableList = [
     [rehypeKatex, { output: 'mathml' }],
@@ -179,6 +188,9 @@ const Markdown = memo(({ content, message, showCursor }: TContentProps) => {
       },
     ],
     [rehypeRaw],
+    [rehypeParse, { fragment: true }],
+    [rehypeReact, { production }],
+    
   ];
 
   if (isInitializing) {
@@ -206,11 +218,11 @@ const Markdown = memo(({ content, message, showCursor }: TContentProps) => {
     a,
     p,
   } as { [nodeType: string]: React.ElementType };
-
   return (
     <ReactMarkdown
       remarkPlugins={[supersub, remarkGfm, [remarkMath, { singleDollarTextMath: true }]]}
       rehypePlugins={rehypePlugins}
+      remarkRehypeOptions = {{ allowDangerousHtml: true }}      
       linkTarget="_new"
       components={components}
     >
