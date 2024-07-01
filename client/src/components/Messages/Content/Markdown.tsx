@@ -12,7 +12,14 @@ import rehypeRaw from 'rehype-raw';
 import CodeBlock from './CodeBlock';
 import { langSubset, validateIframe } from '~/utils';
 import store from '~/store';
-
+import rehypeReact from 'rehype-react';
+import rehypeParse from 'rehype-parse';
+import * as prod from 'react/jsx-runtime'
+// @ts-expect-error: the react types are missing.
+const production = {Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs,
+  createElement: React.createElement,
+  components: {}
+}
 type TCodeProps = {
   inline: boolean;
   className: string;
@@ -82,6 +89,8 @@ const p = React.memo(({ children }: { children: React.ReactNode }) => {
   return <p className="mb-2 whitespace-pre-wrap">{children}</p>;
 });
 
+
+
 const Markdown = React.memo(({ content, message, showCursor }: TContentProps) => {
   const [cursor, setCursor] = useState('█');
   const isSubmitting = useRecoilValue(store.isSubmitting);
@@ -129,6 +138,8 @@ const Markdown = React.memo(({ content, message, showCursor }: TContentProps) =>
       },
     ],
     [rehypeRaw],
+    [rehypeParse, { fragment: true }],
+    [rehypeReact, { production }],
   ];
 
   let isValidIframe: string | boolean | null = false;
@@ -151,6 +162,7 @@ const Markdown = React.memo(({ content, message, showCursor }: TContentProps) =>
       remarkPlugins={[supersub, remarkGfm, [remarkMath, { singleDollarTextMath: true }]]}
       rehypePlugins={rehypePlugins}
       linkTarget="_new"
+      remarkRehypeOptions={{ allowDangerousHtml: true }}
       components={components}
     >
       {isLatestMessage && isSubmitting && !isInitializing
